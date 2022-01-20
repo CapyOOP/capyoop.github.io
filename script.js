@@ -40,5 +40,4 @@ function getContacts() {
 
     page++;
 }
-getContacts();
 //-------------------------------------------
