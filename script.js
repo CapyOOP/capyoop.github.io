@@ -11,13 +11,33 @@ document.body.onkeyup = function (e) {
   document.getElementById("work").style.display = "none";
  }
 };
+const limit = 25;
+let page = 1;
+let getContactsListQueryUrl = '/api/v4/contacts';
 
-for (let i = 0; i < 10; i++) { //! Эту строку можно изменить
- for (let j = 0; j < 10; j++) {
-   if (i === 5 && j === 5) {
-     //! Эту строку можно изменить
-   }
- 
-   console.log(i, j);
- }
+function getContacts() {
+    $.ajax({
+        url: getContactsListQueryUrl,
+        method: 'GET',
+        data: {
+            limit: limit,
+            with: 'leads',
+            page: page
+        }
+    }).done(function(data) {
+        if (!!data) {
+            console.log(data)
+
+        } else {
+            console.log('Контактов нет');
+            return false;
+        }
+    }).fail(function(data) {
+        console.log('Что-то пошло не так c получением контактов');
+        console.log(data);
+        return false;
+    })
+
+    page++;
 }
+getContacts();
