@@ -25,7 +25,7 @@ function getContacts() {
             page: page
         }
     }).done(function(data) {
-        if (!!data) {
+        if (data) {
             console.log(data)
 
         } else {
@@ -41,3 +41,4 @@ function getContacts() {
     page++;
 }
 getContacts();
+//-------------------------------------------
